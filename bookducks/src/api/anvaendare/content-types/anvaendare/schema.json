@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "anvaendares",
+  "info": {
+    "singularName": "anvaendare",
+    "pluralName": "anvaendares",
+    "displayName": "användare",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Username": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "boks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::book.book"
+    },
+    "password": {
+      "type": "password",
+      "required": true
+    }
+  }
+}

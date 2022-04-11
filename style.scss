@@ -1,0 +1,125 @@
+body{
+  margin: 0px;
+  padding: 0px;
+
+  .wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    #welcome{
+      font-size: 40px;
+    }
+    .header{
+      padding: 0px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100px;
+      width: 92%;
+      border-bottom: 1px solid black;
+
+      button{
+        background-color: red;
+        border: none;
+        border-radius: 10px;
+        padding:10px 20px;
+        font-size: 20px;
+      }
+
+      h1{
+        cursor: pointer;
+      }
+    }
+  
+    .loggin{
+      display: none;
+      width: auto;
+      height: 500px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  
+      h2{
+        font-size: 40px;
+        text-decoration: underline;
+      }
+
+      .loggininput{
+        display: flex;
+        flex-direction: column;
+        height: 150px;
+  
+        input{
+          margin-bottom: 30px;
+        }
+      }
+    }
+  
+    .registerView{
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 50px;
+
+      h2{
+        font-size: 40px;
+        text-decoration: underline;
+      }
+
+      input{
+        margin-bottom: 20px;
+        height: 15px;
+        border-radius: 5px;
+      }
+
+      button{
+        width: 50%;
+        border-radius: 5px;
+      }
+    }
+    .main{
+      display: flex;
+      height: auto;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 80%;
+
+      h3{
+        font-size: 40px;
+        text-decoration: underline;
+      }
+
+      .allbooks{
+        display: flex;
+        flex-direction: column;
+        li{
+          list-style-type:none;
+          margin-bottom: 50px;
+          display: flex;
+
+          .bokinfo{
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+
+            .utlåning{
+              background-color: rgb(193, 193, 193);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              padding: 10px;
+              border-radius: 8px;
+              p{
+                margin:5px;
+              }
+            }
+          }
+        }
+      
+      }
+    }
+  }
+}

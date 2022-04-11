@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookducks</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <h1 id="h1">BookDucks</h1>
+      <div class="headerDiv">
+        <button class="loggInBtn">Logga in</button>
+      </div>
+    </header>
+
+    <div class="loggin">
+      <h2>Logga in</h2>
+      <div class="loggininput">
+        <label for="användarnamn" >Användarnamn</label>
+        <input type="text" id="logginAnvändarnamn">
+        <label for="password" >Lösenord</label>
+        <input type="password" id="logginPassword">
+        <button id="logginBtn">Logga in</button>
+        <p>Har du inte konto? <a href="#" class="registrera">Registrera användare</a></p>
+      </div>
+    </div>
+
+    <div class="registerView">
+      <h2>Registrera användare</h2>
+      <label for="användarnamn">Anvnändarman: </label>
+      <input type="text" name="användarnamn" id="reganvändarnamn">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="regEmail">
+      <label for="password"> Lösenord:</label>
+      <input type="password" name="password" regPassword>
+      <button>Registrera</button>
+    </div>
+
+    <main class="main">
+      <h2 id="welcome">Välkommen till Bookducks</h2>
+
+      <h3>Aktuella böcker</h3>
+      <ul class="allbooks"></ul>
+    </main>
+  
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

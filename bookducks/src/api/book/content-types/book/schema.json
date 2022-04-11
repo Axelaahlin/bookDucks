@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "books",
+  "info": {
+    "singularName": "book",
+    "pluralName": "books",
+    "displayName": "Bok",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titel": {
+      "type": "string",
+      "required": true
+    },
+    "forfattare": {
+      "type": "string",
+      "required": true
+    },
+    "sidor": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "betyg": {
+      "type": "integer",
+      "max": 10,
+      "min": 0,
+      "required": true
+    },
+    "omslag": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "anvandare": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::anvaendare.anvaendare"
+    },
+    "genrer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::genrer.genrer"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "genrers",
+  "info": {
+    "singularName": "genrer",
+    "pluralName": "genrers",
+    "displayName": "genrer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "genrer": {
+      "type": "string",
+      "required": true
+    },
+    "boks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::book.book"
+    },
+    "ljudboks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ljudbok.ljudbok"
+    }
+  }
+}
