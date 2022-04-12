@@ -39,10 +39,10 @@
         "images"
       ]
     },
-    "anvandare": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::anvaendare.anvaendare"
+      "target": "plugin::users-permissions.user"
     },
     "genrer": {
       "type": "relation",

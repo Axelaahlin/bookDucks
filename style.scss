@@ -29,9 +29,17 @@ body{
 
       h1{
         cursor: pointer;
+        color: black;
+        text-decoration: none;
+      }
+      a{
+        text-decoration: none;
       }
     }
   
+    
+
+
     .loggin{
       display: none;
       width: auto;
@@ -91,7 +99,20 @@ body{
         text-decoration: underline;
       }
 
-      .allbooks{
+      .bookslists{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        div{
+          width: 45%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          
+
+        }
+      }
+      .allbooks, .allljudboks{
         display: flex;
         flex-direction: column;
         li{
@@ -99,12 +120,19 @@ body{
           margin-bottom: 50px;
           display: flex;
 
+          img{
+            border: 3px solid black;
+            width: 50%;
+          }
+
           .bokinfo{
             display: flex;
             flex-direction: column;
             margin-left: 20px;
 
             .utlåning{
+              width: 100%;
+
               background-color: rgb(193, 193, 193);
               display: flex;
               align-items: center;
@@ -119,6 +147,78 @@ body{
           }
         }
       
+      }
+    }
+
+    .minasidorView{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 95%;
+      height: auto;
+
+      h2{
+        font-size: 40px;
+        text-decoration: underline;
+      }
+      .minSidaInfo{
+        width: 50%;
+        h3{
+          font-size: 25px;
+        }
+      }
+
+      .infowrapper{
+        display: flex; 
+
+        #användarbok{
+          width: 50%;
+
+          h3{
+            margin-left: 38px;
+            font-size: 25px;
+          }
+          #användarböcker, #användarljudböcker{
+            display: flex;
+            width: 90%;
+            flex-direction: column;
+            align-items: center;
+  
+            li{
+              list-style-type: none;
+              width: 100%;
+              margin-bottom: 50px;
+              border-bottom: 1px solid grey;
+
+              img{
+                width: 50%;
+              }
+            }
+          }
+        }
+       
+      }
+    }
+
+    .addWrapper{
+      width: 30vw;
+      height: auto;
+      display: flex;
+      margin-top: 100px;
+      flex-direction: column;
+      justify-content: center;
+
+      button{
+        margin-top: 20px;
+        width: 120px;
+      }
+      label{
+        margin-top: 20px;
+      }
+      input{
+        margin-top: 5px;
+        width: 150px  ;
       }
     }
   }

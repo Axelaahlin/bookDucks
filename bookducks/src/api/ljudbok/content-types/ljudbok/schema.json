@@ -38,15 +38,15 @@
         "images"
       ]
     },
-    "anvandare": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::anvaendare.anvaendare"
-    },
     "genrer": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::genrer.genrer"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
