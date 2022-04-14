@@ -12,16 +12,88 @@ let headerDiv = document.querySelector(".headerDiv")
 let minasidorView = document.querySelector(".minasidorView")
 let addljudbokview = document.querySelector(".addljudbokview")
 let addbokview = document.querySelector(".addbokview")
-
-
-
 let registerbtn = document.querySelector("#registerbtn")
+let addljudbokBtn = document.querySelector(".addljudbokBtn")
+let addbokbtn = document.querySelector(".addbokBtn")
+
+
+let creatbok = async () => {
+  let ljudtitel = document.querySelector("#boktitel").value
+  let ljuddatum = document.querySelector("#bokförfattare").value
+  let ljudlängd = document.querySelector("#bokminuter").value
+  let ljudbetyg = document.querySelector("#bokbetyg").value
+  let ljudgenrer = document.querySelector("#bokgenrer").value
+  let usersid = sessionStorage.getItem("id")
+
+  let ljudfile = document.querySelector("#bokfile").files
+  let imgData = new FormData();
+  imgData.append("files", ljudfile[0])
+
+  await axios.post("http://localhost:1337/api/upload", imgData,{
+    headers:{
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`
+    }})
+  .then((response)=> {
+    let omslagID = response.data[0].id
+    axios.post("http://localhost:1337/api/books?populate=*",{
+      data:{
+        titel:ljudtitel,
+        forfattare: ljuddatum,
+        sidor: ljudlängd,
+        betyg: ljudbetyg,
+        genrer: ljudgenrer,
+        omslag: omslagID,
+        user: usersid
+      }},{
+        headers:{
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`
+        }
+      }
+    )
+  })
+}
+
+let creatLjudbok = async () => {
+  let ljudtitel = document.querySelector("#titel").value
+  let ljuddatum = document.querySelector("#utgivning").value
+  let ljudlängd = document.querySelector("#minuter").value
+  let ljudbetyg = document.querySelector("#betyg").value
+  let ljudgenrer = document.querySelector("#genrer").value
+  let usersid = sessionStorage.getItem("id")
+  
+
+  let ljudfile = document.querySelector("#file").files
+  let imgData = new FormData();
+  imgData.append("files", ljudfile[0])
+
+  await axios.post("http://localhost:1337/api/upload", imgData,{
+    headers:{
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`
+    }})
+  .then((response)=> {
+    let omslagID = response.data[0].id
+    axios.post("http://localhost:1337/api/ljudboks?populate=*",{
+      data:{
+        titel:ljudtitel,
+        utgivningsdatum: ljuddatum,
+        minuter: ljudlängd,
+        betyg: ljudbetyg,
+        genrer: ljudgenrer,
+        omslag: omslagID,
+        user: usersid
+      }},{
+        headers:{
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`
+        }
+      }
+    )
+  })
+}
 
 let registerUser = async () => {
   let registerUsername = document.querySelector("#reganvändarnamn")
   let registerEmail = document.querySelector("#regEmail")
   let registerPassword = document.querySelector("#regPassword") 
-  console.log(registerPassword.value);
 
   await axios.post('http://localhost:1337/api/auth/local/register', {
           username: registerUsername.value,
@@ -29,7 +101,6 @@ let registerUser = async () => {
           password: registerPassword.value,
     });
 }
-
 
 let renderBooks = async (vart) => {
 let response = await axios.get(`http://localhost:1337/api/books?populate=*`);
@@ -39,7 +110,6 @@ addbokview.style.display = "none"
 
 
 books.forEach(book => {
-  // console.log(book.attributes.genrer.data.attributes.genrer)
   let li = document.createElement("li");
   li.innerHTML = 
   `
@@ -98,7 +168,6 @@ let renderLjudBooks = async (vart) => {
   let books = response.data.data
   
   books.forEach(book => {
-    // console.log(book.attributes.genrer.data.attributes.genrer)
     let li = document.createElement("li");
     li.innerHTML = 
     `
@@ -184,10 +253,22 @@ let login = async () => {
       identifier: username,
       password,
   });
-
   let token = response.data.jwt;
   sessionStorage.setItem("token", token);
   sessionStorage.setItem("username", username)
+
+ let usersdata = await axios.get("http://localhost:1337/api/users")
+ let userResponse = usersdata.data
+ let userid = sessionStorage.getItem("username")
+ userResponse.forEach(user => {
+   if(user.username == username){
+     sessionStorage.setItem("id", user.id)
+   }
+ })
+
+
+
+
 }
 
 let checkIfLoggedIn = () => {
@@ -197,20 +278,38 @@ let checkIfLoggedIn = () => {
   header.innerHTML = 
   `
   <div>
-  <h1 id="h1">BookDucks</h1>
+  <a href="/index.html"><h1 id="h1">BookDucks</h1></a>
   </div>
   <div id="länkdiv">
   <button id="addljudbok">Lägg till ljudbok</button>
   <button id="addbok">Lägg till bok</button>
   </div>
   <div class="headerDiv">
+  <button id="loggaut">Logga ut</button> 
   <button class="minasidor">Mina sidor</button>
   </div>
   `
-  document.querySelector("#addljudbok").addEventListener("click", () => {
-  
+
+  document.querySelector("#loggaut").addEventListener("click", () => {
+    sessionStorage.clear()
+    location.reload()
+
+    mainview.style.display = "flex"
+    loggInView.style.display = "none"
+    minasidorView.style.display = "none"
+    registerView.style.display = "none"
+    addljudbokview.style.display = "none"
+    addbokview.style.display = "none"
   })
   document.querySelector("#addljudbok").addEventListener("click", () => {
+    mainview.style.display = "none"
+    loggInView.style.display = "none"
+    minasidorView.style.display = "none"
+    registerView.style.display = "none"
+    addljudbokview.style.display = "flex"
+    addbokview.style.display = "none"
+  })
+  document.querySelector("#addbok").addEventListener("click", () => {
     mainview.style.display = "none"
     loggInView.style.display = "none"
     minasidorView.style.display = "none"
@@ -224,7 +323,8 @@ let checkIfLoggedIn = () => {
     loggInView.style.display = "none"
     minasidorView.style.display = "flex"
     registerView.style.display = "none"
-
+    addljudbokview.style.display = "none"
+    addbokview.style.display = "none"
   
   
     let users = async () => {
@@ -235,6 +335,7 @@ let checkIfLoggedIn = () => {
         let username = sessionStorage.getItem("username")
         
         let d = new Date(user.createdAt)
+       
 
         if(username === user.username) {
           minasidorView.innerHTML = 
@@ -246,7 +347,7 @@ let checkIfLoggedIn = () => {
               <p>Namn: ${user.username}</p>
               <p>Email: ${user.email}</p>
               <p>Ditt ID: ${user.id}</p>
-              <p>Du skapade din användare: ${d.getDate()}-${d.getMonth()}-${d.getYear()}</p>
+              <p>Du skapade din användare: ${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}</p>
             </div>
             <div id="användarbok">
               <h3>Dina lånade böcker och ljudböcker:</h3>
@@ -288,4 +389,12 @@ registerbtn.addEventListener("click", () => {
     loggInView.style.display = "none"
     minasidorView.style.display = "none"
     registerView.style.display = "none"
+})
+
+addljudbokBtn.addEventListener("click", () => {
+  creatLjudbok()
+})
+
+addbokbtn.addEventListener("click", () => {
+  creatbok()
 })

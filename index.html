@@ -55,7 +55,14 @@
           <label for="utgivning">Utgivningsdatum:</label>
           <input type="date" name="utgivning" id="utgivning">
           <label for="längd">Längd (antal minuter):</label>
-          <input type="number">
+          <input type="number" id="minuter">
+          <label for="genrer">Genrer:</label>
+          <select name="genrer" id="genrer">
+            <option value="3">Barn</option>
+            <option value="1">Biografi</option>
+            <option value="4">Fantasy</option>
+            <option value="2">komedi</option>
+          </select>
           <label for="betyg">Betyg (1-10):</label>
           <input type="number" name="betyg" id="betyg">
           <label for="file">Lägg till ett omslag:</label>
@@ -67,14 +74,19 @@
     <div class="addbokview">
       <div class="addWrapper">
         <h2>Lägg till en bok för utlåning</h2>
+        <label for="bokTitel">Titel:</label>
+        <input type="text" name="boktitel" id="boktitel">
         <label for="bokförfattare">Författare:</label>
         <input type="text" name="bokförfattare" id="bokförfattare">
-
-        <label for="Författare">Författare:</label>
-        <input type="text" name="författare" id="författare">
-
         <label for="Sidor">Antal sidor</label>
-        <input type="number">
+        <input type="number" id="bokminuter">
+        <label for="bokgenrer">Genrer:</label>
+        <select name="bokgenrer" id="bokgenrer">
+          <option value="3">Barn</option>
+          <option value="1">Biografi</option>
+          <option value="4">Fantasy</option>
+          <option value="2">komedi</option>
+          </select>
         <label for="bokbetyg">Betyg (1-10):</label>
         <input type="number" name="bokbetyg" id="bokbetyg">
         <label for="bokfile">Lägg till ett omslag:</label>

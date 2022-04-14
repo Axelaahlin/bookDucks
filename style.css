@@ -45,16 +45,6 @@ body .wrapper .header button {
   font-size: 20px;
 }
 
-body .wrapper .header h1 {
-  cursor: pointer;
-  color: black;
-  text-decoration: none;
-}
-
-body .wrapper .header a {
-  text-decoration: none;
-}
-
 body .wrapper .loggin {
   display: none;
   width: auto;
@@ -111,11 +101,6 @@ body .wrapper .registerView h2 {
 body .wrapper .registerView input {
   margin-bottom: 20px;
   height: 15px;
-  border-radius: 5px;
-}
-
-body .wrapper .registerView button {
-  width: 50%;
   border-radius: 5px;
 }
 
