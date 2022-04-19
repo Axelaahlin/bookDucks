@@ -226,6 +226,7 @@ loggInBtn.addEventListener("click", () => {
 if(loggInView.style.display = "none" )  {
   loggInView.style.display = "flex"
   mainview.style.display = "none"
+  registerView.style.display = "none"
 } 
   registreraATagg.addEventListener("click",() => {
     loggInView.style.display = "none"
@@ -383,7 +384,7 @@ logginBtn.addEventListener("click", async () => {
 
 registerbtn.addEventListener("click", () => {
   registerUser();
-  alert("Din användare är skapad, Logga in på nästa sida")
+  alert("Din användare är skapad, logga in på nästa sida")
 
     mainview.style.display = "flex"
     loggInView.style.display = "none"
