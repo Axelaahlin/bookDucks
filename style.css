@@ -47,7 +47,7 @@ body .wrapper #welcome {
 
 body .wrapper .header {
   background-color: white;
-  border-bottom: solid black 2px;
+  border-bottom: solid black 5px;
   padding: 0px 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -208,12 +208,18 @@ body .wrapper .main .allbooks li .bokinfo, body .wrapper .main .allljudboks li .
       -ms-flex-direction: column;
           flex-direction: column;
   margin-left: 20px;
+  height: auto;
+}
+
+body .wrapper .main .allbooks li .bokinfo h4, body .wrapper .main .allljudboks li .bokinfo h4 {
+  color: red;
+  font-size: 25px;
+  text-align: center;
 }
 
 body .wrapper .main .allbooks li .bokinfo .utlåning, body .wrapper .main .allljudboks li .bokinfo .utlåning {
-  width: 110%;
-  margin-right: 10px;
-  background-color: red;
+  width: 100%;
+  margin-right: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -227,8 +233,9 @@ body .wrapper .main .allbooks li .bokinfo .utlåning, body .wrapper .main .alllj
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
+  font-size: 15px;
 }
 
 body .wrapper .main .allbooks li .bokinfo .utlåning p, body .wrapper .main .allljudboks li .bokinfo .utlåning p {
